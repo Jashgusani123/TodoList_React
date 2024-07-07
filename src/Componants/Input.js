@@ -15,7 +15,7 @@ const Input = () => {
     const submitHend = (e) => {
         e.preventDefault();
         if(dec.length > 0 && title.length > 0 ){
-            setmainTask([...mainTask, { titles, dec }])
+            setmainTask([...mainTask, { title, dec }])
             count++
             document.title = `(${count}) TodoList`
             setcount(count)
