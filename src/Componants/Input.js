@@ -7,11 +7,18 @@ const Input = () => {
     const [title, settitle] = useState("")
     const [dec, setdec] = useState("")
     const [mainTask, setmainTask] = useState([])
+    let [count, setcount] = useState(0)
 
+    if(count == 0){
+        document.title = "TodoList"
+    }
     const submitHend = (e) => {
         e.preventDefault();
         if(dec.length > 0 && title.length > 0 ){
-            setmainTask([...mainTask, { title, dec }])
+            setmainTask([...mainTask, { titles, dec }])
+            count++
+            document.title = `(${count}) TodoList`
+            setcount(count)
         }else if(dec.length == 0 && title.length>0){
             alert("Pleace add Time")
         }else if(title.length == 0 && dec.length >0){
@@ -27,6 +34,9 @@ const Input = () => {
         let data = [...mainTask]
         data.splice(i, 1)
         setmainTask(data)
+        count--
+        document.title = `(${count}) TodoList`
+        setcount(count)
     }
 
     let renderval = "No Data Avilable"
